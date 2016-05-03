@@ -3,7 +3,7 @@
  */
 (function () {
 
-   var quizApp = angular.module('quizApp', ['ngRoute']);
+   var quizApp = angular.module('quizApp', ['ngRoute', 'ngAnimate']);
 
     quizApp.config(function($routeProvider){
         $routeProvider

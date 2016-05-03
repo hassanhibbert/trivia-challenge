@@ -27,6 +27,7 @@
                                 countdown(mins - 1);
                             }, 1000);
                         }
+                        console.log('what happen now');
                         if (element.html() === '0:00' && typeof cb === 'function') {
                             cb();
                         }

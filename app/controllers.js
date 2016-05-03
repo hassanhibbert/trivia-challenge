@@ -14,7 +14,7 @@
                 $quizTitle.addClass('fadeInScale');
             };
 
-        animationFactory.transitionEnd($quizTitle, 'opacity', function(){
+        animationFactory.transitionEnd($quizTitle, 'opacity', function() {
             $startButton.addClass('fadeIn');
         });
 

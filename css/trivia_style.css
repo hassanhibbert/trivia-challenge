@@ -372,3 +372,31 @@ body {
 	margin: 31px auto;
 	opacity: 0;
 }
+/* slide in from the right */
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideOutLeft {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.ng-enter {
+	animation: slideInRight 0.5s both ease-in;
+
+}
+.ng-leave {
+	animation: slideOutLeft 0.1s both ease-in;
+
+}
+

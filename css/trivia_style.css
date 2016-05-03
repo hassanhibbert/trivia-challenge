@@ -248,7 +248,10 @@ body {
 	position: absolute;
 	width: 700px;
 	height: 500px;
-	background-color: #0f2a5f;
+    background: -webkit-linear-gradient(#0F2A5F, #14284E);
+    background: -moz-linear-gradient(#0F2A5F, #14284E);
+    background: -o-linear-gradient(#0F2A5F, #14284E);
+    background: linear-gradient(#0F2A5F, #14284E);
 }
 .circle {
 	position: absolute;
@@ -371,6 +374,7 @@ body {
 .start-quiz {
 	margin: 31px auto;
 	opacity: 0;
+    box-shadow: 0 0 20px #101217;
 }
 /* slide in from the right */
 @keyframes slideInRight {
@@ -391,12 +395,34 @@ body {
 	}
 }
 
+/*.ng-enter {*/
+	/*animation: slideInRight 0.5s both ease-in;*/
+
+/*}*/
+/*.ng-leave {*/
+	/*animation: slideOutLeft 0.5s both ease-in;*/
+/*}*/
+
 .ng-enter {
-	animation: slideInRight 0.5s both ease-in;
-
+    transition:0.5s linear all;
+    opacity:0;
+    transition-delay: 0.5s;
 }
-.ng-leave {
-	animation: slideOutLeft 0.1s both ease-in;
 
+.ng-enter.ng-enter-active {
+    opacity:1;
+}
+
+.ng-leave {
+    transition:0.5s linear all;
+    opacity:1;
+}
+.ng-leave.ng-leave-active {
+    opacity:0;
+}
+
+.ng-hide {
+    opacity: 0 !important;
+    transition: none !important;
 }
 

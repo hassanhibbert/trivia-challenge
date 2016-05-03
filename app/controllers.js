@@ -4,10 +4,13 @@
 
 (function (quizApp) {
 
-    var quizController = function ($scope, quizFactory) {
+    var quizController = function ($scope, quizFactory, $rootElement, $location) {
+
+        var errorMessage = 'Please select an answer.';
 
         function init() {
             loadQuestions();
+
         }
         
         function updateQuestion() {
@@ -21,6 +24,7 @@
             quizFactory.loadQuestions()
                 .then(function(response){
                     quizFactory.cacheData(response.data);
+                    $scope.quizLength = quizFactory.getQuizLength();
                     updateQuestion();
                 });
         }
@@ -32,12 +36,17 @@
                 updateQuestion();
                 $scope.submitBtn = quizFactory.showSubmit();
             } else {
-                $scope.error = 'Please select an answer.';
+                $scope.error = errorMessage;
             }
         };
 
         $scope.submitQuiz = function() {
-            console.log('check answer and submit quiz');
+            if(quizFactory.isAnswered($scope.formData)) {
+                quizFactory.checkAnswer($scope.formData);
+                $location.url('results');
+            } else {
+                $scope.error = errorMessage;
+            }
         };
 
         init();
@@ -46,17 +55,21 @@
 
 
     var resultsController = function ($scope, quizFactory) {
-
+        $scope.correctNum = quizFactory.getCorrectNumber();
+        $scope.quizLength = quizFactory.getQuizLength();
+        $scope.percent = quizFactory.getPercent();
+        $scope.resetQuiz = quizFactory.reset;
     };
-    
+
     var reviewController = function ($scope, quizFactory) {
-
+        $scope.review =  quizFactory.getQuizReview();
+        $scope.allCorrect = quizFactory.isAllCorrect();
+        $scope.resetQuiz = quizFactory.reset;
     };
-
 
 
     // quiz controller
-    quizApp.controller('quizController', ['$scope', 'quizFactory', quizController]);
+    quizApp.controller('quizController', ['$scope', 'quizFactory', '$rootElement', '$location', quizController]);
 
     // results controller
     quizApp.controller('resultsController', ['$scope', 'quizFactory', resultsController]);

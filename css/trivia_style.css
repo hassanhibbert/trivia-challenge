@@ -305,6 +305,11 @@ body {
 	margin: 10px 0 25px 35px;
 	color: #20963d;
 }
+.red {
+	margin: 10px 0 25px 35px;
+	color: #BF3849;
+}
+
 .error {
 	width: 100%;
 	padding: 5px 0 5px 0;

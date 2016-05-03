@@ -9,7 +9,7 @@
             position = 0,
             cachedQuestions = [],
             correct = 0,
-            results = [];
+            review = [];
 
         quizServices.cacheData = function (dataArray) {
             dataArray.forEach(function(item){
@@ -26,13 +26,29 @@
         };
 
         quizServices.checkAnswer = function (choice) {
-            
-            var correctAnswer = cachedQuestions[position].answer;
-            if (correctAnswer === choice.checked) {
+            var selectedValue = choice.checked,
+                correctAnswer = cachedQuestions[position].answer,
+                selectedAnswer = cachedQuestions[position].multipleChoice[selectedValue],
+                selectedQuestion = cachedQuestions[position].question,
+                questionId = cachedQuestions[position].id;
+
+            if (correctAnswer === selectedValue) {
                 correct += 1;
-                results.push({answer: 'correct', question: cachedQuestions[position].question});
-            }else {
-                results.push({answer: 'incorrect', question: cachedQuestions[position].question});
+                review.push({
+                    answer: 'Correct',
+                    question: selectedQuestion,
+                    selected: selectedAnswer,
+                    class: 'green',
+                    id: questionId
+                });
+            } else {
+                review.push({
+                    answer: 'Incorrect',
+                    question: selectedQuestion,
+                    selected: selectedAnswer,
+                    class: 'red',
+                    id: questionId
+                });
             }
         };
 
@@ -47,11 +63,38 @@
         quizServices.showSubmit = function () {
             return (position === (cachedQuestions.length - 1))
         };
-        
-        
+
+        quizServices.getCorrectNumber = function() {
+            return correct;
+        };
+
+        quizServices.reset = function () {
+            position = 0;
+            correct = 0;
+            cachedQuestions = [];
+            review = [];
+        };
+
+        quizServices.getQuizLength = function() {
+            return cachedQuestions.length;
+        };
+
+        quizServices.getPercent = function () {
+            var quizLength = cachedQuestions.length;
+            return Math.round((correct / quizLength) * 100);
+        };
+
+        quizServices.getQuizReview = function () {
+            return review;
+        };
+
+        quizServices.isAllCorrect = function() {
+            return (correct === quizServices.getQuizLength());
+        };
+
         return quizServices;
     };
 
-    quizApp.factory('quizFactory', ['$http',quizFactory]);
+    quizApp.factory('quizFactory', ['$http', quizFactory]);
 
 })(angular.module('quizApp'));

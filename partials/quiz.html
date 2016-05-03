@@ -13,17 +13,21 @@
                     <input  type="radio" ng-model="formData.checked"  name="q{{quiz.id}}" value="{{value}}">{{choice}}
                 </label>
             </div>
-            <a href="#/results" ng-show="submitBtn" ng-click="submitQuiz()" class="green-button submit-btn first">Submit</a>
+            <a ng-show="submitBtn" ng-click="submitQuiz()" class="green-button submit-btn first">Submit</a>
             <div ng-show="!submitBtn" ng-click="nextQuestion()" class="next-btn blue-button first">
                 Next Question<img src="images/next-arrow.png" alt="next arrow"/>
             </div>
         </div>
         <div class="right">
-            <p class="question-count">Question: {{quiz.id}} of 10</p>
+            <p class="question-count">Question: {{quiz.id}} of {{::quizLength}}</p>
             <div class="main-img"><img ng-src="{{quiz.image}}" alt="{{quiz.category}}"/></div>
         </div>
         <div class="error-container">
             <div ng-show="error" class="error clear"><p><img src="images/caution.png">&nbsp;{{error}}</p></div>
         </div>
     </div>
+</div>
+
+<div class="footer clear">
+    <p class="time-remain">Time Remaining <quiz-timer title="{{quiz.id}}"></quiz-timer> Min</p>
 </div>

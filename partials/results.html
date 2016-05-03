@@ -4,35 +4,13 @@
 </div>
 
 <div class="question-container">
-    <!--<div class="hide">-->
-        <!--<div class="left">-->
-            <!--<p class="number">{{quiz.id}}</p>-->
-            <!--<p class="question">{{quiz.question}}</p>-->
-            <!--<div class="mult-style">-->
-                <!--<label ng-repeat="(value, choice) in choices">-->
-                    <!--<input  type="radio" ng-model="formData.checked"  name="q{{quiz.id}}" value="{{value}}">{{choice}}-->
-                <!--</label>-->
-            <!--</div>-->
-            <!--<a href="#/results" ng-show="submitBtn" ng-click="submitQuiz()" class="green-button submit-btn first">Submit</a>-->
-            <!--<div ng-show="!submitBtn" ng-click="nextQuestion()" class="next-btn blue-button first">-->
-                <!--Next Question<img src="images/next-arrow.png" alt="next arrow"/>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="right">-->
-            <!--<p class="question-count">Question: {{quiz.id}} of 10</p>-->
-            <!--<div class="main-img"><img ng-src="{{quiz.image}}" alt="{{quiz.category}}"/></div>-->
-        <!--</div>-->
-        <!--<div class="error-container">-->
-            <!--<div ng-show="error" class="error clear"><p><img src="images/caution.png">&nbsp;{{error}}</p></div>-->
-        <!--</div>-->
-    <!--</div>-->
     <div class="results">
         <div class="badge">
-            <p>100%</p>
+            <p>{{percent}}%</p>
         </div>
-        <p class="message">You have correctly answered 1 out of 10 questions. </p>
-        <div class="answer-btn green-button">Review</div>
-        <a href="index.html" class="retry-btn green-button">Retry</a>
+        <p class="message">You have correctly answered {{correctNum}} out of {{quizLength}} questions. </p>
+        <a href="#/review" class="answer-btn green-button">Review</a>
+        <a ng-click="resetQuiz()" href="#/" class="retry-btn green-button">Retry</a>
     </div>
 </div>
 

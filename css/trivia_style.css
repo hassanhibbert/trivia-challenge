@@ -240,13 +240,7 @@ body {
 	height: 15px;
 	margin-right: 12px;
 }
-.question-1, .question-2, .question-3, .question-4, .question-5, .question-6, .question-7, .question-8, .question-9, .question-10, .question-11, .question-12 {
 
-	display: none;
-}
-.active {
-	display: block;
-}
 .first {
 	margin-left: 0px !important;
 }
@@ -258,20 +252,47 @@ body {
 }
 .circle {
 	position: absolute;
-	top: 187px;
-	left: 289px;
-	width: 123px;
-	height: 123px;
-	opacity: 0;
+	/*top: 187px;*/
+	/*left: 289px;*/
+	/*width: 123px;*/
+	/*height: 123px;*/
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-ms-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	transition-delay: .5s;
+	-webkit-transform: scale(0.5, 0.5);
+	-moz-transform: scale(0.5, 0.5);
+	-ms-transform: scale(0.5, 0.5);
+	-o-transform: scale(0.5, 0.5);
+	transform: scale(0.5, 0.5);
 	filter: alpha(opacity=0);
+	opacity: 0;
+}
+.fadeInScale {
+	opacity: 1 !important;
+	-webkit-transform: scale(1, 1);
+	-moz-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+	-o-transform: scale(1, 1);
+	transform: scale(1, 1);
+}
+.fadeIn {
+	opacity: 1 !important;
 }
 .title {
-	position: absolute;
-	top: 196px;
-	left: 237px;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-ms-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	opacity: 0;
+	transition-delay: 1s;
 	width: 221px;
-	height: 98px;
-	display: none;
+	display: block;
+	margin: 0 auto;
+	padding-top: 110px;
 }
 .message {
 	font-size: 18px;
@@ -340,4 +361,14 @@ body {
 .question {
     margin: 6px 0px 21px 47px;
 }
+}
+
+.intro-container {
+	width:330px;
+	height:330px;
+	margin: 40px auto 0 auto;
+}
+.start-quiz {
+	margin: 31px auto;
+	opacity: 0;
 }

@@ -2,7 +2,24 @@
  * Created by HXHibbert on 5/2/16.
  */
 
-(function (quizApp) {
+(function (quizApp, $) {
+
+    var introController = function ($scope,$timeout, animationFactory) {
+        var $circleImage = $('.circle'),
+            $quizTitle = $('.title'),
+            $startButton = $('.start-quiz'),
+
+            animation = function () {
+                $circleImage.addClass('fadeInScale');
+                $quizTitle.addClass('fadeInScale');
+            };
+
+        animationFactory.transitionEnd($quizTitle, 'opacity', function(){
+            $startButton.addClass('fadeIn');
+        });
+
+        $timeout(animation);
+    };
 
     var quizController = function ($scope, quizFactory, $rootElement, $location) {
 
@@ -72,6 +89,9 @@
     };
 
 
+    // intro controller
+    quizApp.controller('introController', ['$scope', '$timeout', 'animationFactory', introController]);
+
     // quiz controller
     quizApp.controller('quizController', ['$scope', 'quizFactory', '$rootElement', '$location', quizController]);
 
@@ -81,4 +101,4 @@
     // review controller
     quizApp.controller('reviewController', ['$scope', 'quizFactory', reviewController]);
 
-})(angular.module('quizApp'));
+})(angular.module('quizApp'), jQuery);

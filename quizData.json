@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "question": "What is Batman's true identity?",
+    "multipleChoice": {
+      "A": "Thomas Wayne",
+      "B": "Batman is Batman",
+      "C": "Bruce Wayne",
+      "D": "Ben Affleck"
+    },
+    "image": "images/batman.jpg",
+    "answer": "C",
+    "category": "Superhero"
+  },
+  {
+    "id": 2,
+    "question": "What is the only part on the thing that's not solid?",
+    "multipleChoice": {
+      "A": "His fingernails",
+      "B": "His heart",
+      "C": "His knee",
+      "D": "His eyes"
+    },
+    "image": "images/thing.jpg",
+    "answer": "D",
+    "category": "Superhero"
+  },
+  {
+    "id": 3,
+    "question": "What was snickers original name?",
+    "multipleChoice": {
+      "A": "Fun run",
+      "B": "Marathon",
+      "C": "10k",
+      "D": "Hungry Bar"
+    },
+    "image": "images/snickers.jpg",
+    "answer": "B",
+    "category": "Candy"
+  },
+  {
+    "id": 4,
+    "question": "Which basketball team does this logo belong to?",
+    "multipleChoice": {
+      "A": "Cincinnati Bulls",
+      "B": "Michigan Bulls",
+      "C": "Chicago Bulls",
+      "D": "LA Bulls"
+    },
+    "image": "images/bull.jpg",
+    "answer": "C",
+    "category": "Basketball"
+  },
+  {
+    "id": 5,
+    "question": "What is the largest kind of shark?",
+    "multipleChoice": {
+      "A": "Basking Shark",
+      "B": "Whale Shark",
+      "C": "Great White Shark",
+      "D": "Great Hammerhead Shark"
+    },
+    "image": "images/shark.jpg",
+    "answer": "B",
+    "category": "Animals"
+  },
+  {
+    "id": 6,
+    "question": "How many feet of noodles are in a can of Campbell's chicken noodle soup?",
+    "multipleChoice": {
+      "A": "10 feet",
+      "B": "55 feet",
+      "C": "5 feet",
+      "D": "32 feet"
+    },
+    "image": "images/cambell.jpg",
+    "answer": "D",
+    "category": "Food"
+  },
+  {
+    "id": 7,
+    "question": "What is the longest snake in the world?",
+    "multipleChoice": {
+      "A": "Anaconda",
+      "B": "Reticulated python",
+      "C": "Green tree snake",
+      "D": "Corn snake"
+    },
+    "image": "images/snake.jpg",
+    "answer": "B",
+    "category": "Animals"
+  },
+  {
+    "id": 8,
+    "question": "Diamonds are made from highly compressed?",
+    "multipleChoice": {
+      "A": "Emeralds",
+      "B": "Coal",
+      "C": "Crystals",
+      "D": "Mud"
+    },
+    "image": "images/diamond.jpg",
+    "answer": "B",
+    "category": "Jewelry"
+  },
+  {
+    "id": 9,
+    "question": "How did Peter Parker become Spider-man?",
+    "multipleChoice": {
+      "A": "He was bitten by a radioactive spider",
+      "B": "He was bitten by a spider",
+      "C": "He drank toxic water",
+      "D": "A radioactive spider fell on him"
+    },
+    "image": "images/spiderman.jpg",
+    "answer": "A",
+    "category": "Superhero"
+  },
+  {
+    "id": 10,
+    "question": "What old car logo is this?",
+    "multipleChoice": {
+      "A": "Skoda",
+      "B": "Toyota",
+      "C": "Audi",
+      "D": "Fiat"
+    },
+    "image": "images/logo.jpg",
+    "answer": "B",
+    "category": "Car Logo"
+  }
+]

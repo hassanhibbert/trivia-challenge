@@ -4,14 +4,15 @@
 
 (function (quizApp) {
 
-    var quizDirective = function () {
+    var quizDirective = function ($location, $timeout) {
         return {
             scope: {
-                title: '@'
+                timeoutFn: '&'
             },
-            restrict: 'EA',
+            restrict: 'E',
             template: '<span></span>',
-            link: function ($scope, element) {
+            replace: true,
+            link: function (scope, element, attrs) {
                 function countdown(minutes,cb) {
                     var seconds = 60,
                         mins = minutes;
@@ -20,9 +21,9 @@
                         seconds--;
                         element.html(current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds));
                         if (seconds > 0) {
-                            setTimeout(tick, 1000);
+                            $timeout(tick, 1000);
                         } else if (mins > 1) {
-                            setTimeout(function() {
+                            $timeout(function() {
                                 countdown(mins - 1);
                             }, 1000);
                         }
@@ -33,14 +34,15 @@
                     tick();
                 }
 
-                countdown(1, function() {
-                    console.log('done');
+                // 2 minute countdown until the quiz ends
+                countdown(2, function() {
+                    scope.timeoutFn();
                 });
 
             }
         }
     };
 
-    quizApp.directive('quizTimer', quizDirective);
+    quizApp.directive('quizTimer', ['$location', '$timeout', quizDirective]);
 
 })(angular.module('quizApp'));

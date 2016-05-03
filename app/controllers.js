@@ -48,6 +48,10 @@
                 $scope.error = errorMessage;
             }
         };
+        
+        $scope.timeoutSubmit = function() {
+            $location.url('results');
+        };
 
         init();
 

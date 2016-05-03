@@ -1,5 +1,5 @@
 <div class="header">
-    <p class="name">{{::quizName}}</p>
+    <p class="name">Trivia Challenge!</p>
     <p class="category">Category: {{quiz.category}}</p>
 </div>
 
@@ -13,8 +13,7 @@
                     <input  type="radio" ng-model="formData.checked"  name="q{{quiz.id}}" value="{{value}}">{{choice}}
                 </label>
             </div>
-            <!--div ng-click="prevQuestion()" class="back-btn blue-button"><img src="images/back-arrow.png" alt="back arrow"/>Back</div-->
-            <div ng-show="submitBtn" ng-click="submitQuiz()" class="green-button submit-btn first">Submit</div>
+            <a href="#/results" ng-show="submitBtn" ng-click="submitQuiz()" class="green-button submit-btn first">Submit</a>
             <div ng-show="!submitBtn" ng-click="nextQuestion()" class="next-btn blue-button first">
                 Next Question<img src="images/next-arrow.png" alt="next arrow"/>
             </div>

@@ -8,7 +8,6 @@
 
         function init() {
             loadQuestions();
-            $scope.quizName = 'Trivia Challenge!';
         }
         
         function updateQuestion() {
@@ -37,10 +36,32 @@
             }
         };
 
+        $scope.submitQuiz = function() {
+            console.log('check answer and submit quiz');
+        };
+
         init();
 
     };
 
+
+    var resultsController = function ($scope, quizFactory) {
+
+    };
+    
+    var reviewController = function ($scope, quizFactory) {
+
+    };
+
+
+
+    // quiz controller
     quizApp.controller('quizController', ['$scope', 'quizFactory', quizController]);
+
+    // results controller
+    quizApp.controller('resultsController', ['$scope', 'quizFactory', resultsController]);
+
+    // review controller
+    quizApp.controller('reviewController', ['$scope', 'quizFactory', reviewController]);
 
 })(angular.module('quizApp'));

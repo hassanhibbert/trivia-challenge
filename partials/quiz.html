@@ -1,0 +1,30 @@
+<div class="header">
+    <p class="name">{{::quizName}}</p>
+    <p class="category">Category: {{quiz.category}}</p>
+</div>
+
+<div class="question-container">
+    <div class="hide">
+        <div class="left">
+            <p class="number">{{quiz.id}}</p>
+            <p class="question">{{quiz.question}}</p>
+            <div class="mult-style">
+                <label ng-repeat="(value, choice) in choices">
+                    <input  type="radio" ng-model="formData.checked"  name="q{{quiz.id}}" value="{{value}}">{{choice}}
+                </label>
+            </div>
+            <!--div ng-click="prevQuestion()" class="back-btn blue-button"><img src="images/back-arrow.png" alt="back arrow"/>Back</div-->
+            <div ng-show="submitBtn" ng-click="submitQuiz()" class="green-button submit-btn first">Submit</div>
+            <div ng-show="!submitBtn" ng-click="nextQuestion()" class="next-btn blue-button first">
+                Next Question<img src="images/next-arrow.png" alt="next arrow"/>
+            </div>
+        </div>
+        <div class="right">
+            <p class="question-count">Question: {{quiz.id}} of 10</p>
+            <div class="main-img"><img ng-src="{{quiz.image}}" alt="{{quiz.category}}"/></div>
+        </div>
+        <div class="error-container">
+            <div ng-show="error" class="error clear"><p><img src="images/caution.png">&nbsp;{{error}}</p></div>
+        </div>
+    </div>
+</div>

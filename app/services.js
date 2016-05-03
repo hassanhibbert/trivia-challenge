@@ -41,13 +41,11 @@
         };
 
         quizServices.next = function () {
-            if (position !== cachedQuestions.length - 1){
-                position += 1;
-            } else {
-                //console.log('last question');
-                //console.log(results);
-            }
+            position += 1;
+        };
 
+        quizServices.showSubmit = function () {
+            return (position === (cachedQuestions.length - 1))
         };
 
         return quizServices;

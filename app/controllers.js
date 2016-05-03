@@ -31,6 +31,7 @@
                 quizFactory.checkAnswer($scope.formData);
                 quizFactory.next();
                 updateQuestion();
+                $scope.submitBtn = quizFactory.showSubmit();
             } else {
                 $scope.error = 'Please select an answer.';
             }

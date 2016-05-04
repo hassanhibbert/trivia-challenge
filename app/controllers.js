@@ -1,10 +1,6 @@
-/**
- * Created by HXHibbert on 5/2/16.
- */
-
 (function (quizApp, $) {
 
-    var introController = function ($scope,$timeout, animationFactory) {
+    var introController = function ($scope, $timeout, animationFactory) {
         var $circleImage = $('.circle'),
             $quizTitle = $('.title'),
             $startButton = $('.start-quiz'),
@@ -14,7 +10,7 @@
                 $quizTitle.addClass('fadeInScale');
             };
 
-        animationFactory.transitionEnd($quizTitle, 'opacity', function() {
+        animationFactory.transitionEnd($quizTitle, 'opacity', function () {
             $startButton.addClass('fadeIn');
         });
 
@@ -27,9 +23,8 @@
 
         function init() {
             loadQuestions();
-
         }
-        
+
         function updateQuestion() {
             $scope.quiz = quizFactory.getQuestion();
             $scope.choices = $scope.quiz.multipleChoice;
@@ -39,7 +34,7 @@
 
         function loadQuestions() {
             quizFactory.loadQuestions()
-                .then(function(response){
+                .then(function (response) {
                     quizFactory.cacheData(response.data);
                     $scope.quizLength = quizFactory.getQuizLength();
                     updateQuestion();
@@ -47,7 +42,7 @@
         }
 
         $scope.nextQuestion = function () {
-            if(quizFactory.isAnswered($scope.formData)) {
+            if (quizFactory.isAnswered($scope.formData)) {
                 quizFactory.checkAnswer($scope.formData);
                 quizFactory.next();
                 updateQuestion();
@@ -57,17 +52,13 @@
             }
         };
 
-        $scope.submitQuiz = function() {
-            if(quizFactory.isAnswered($scope.formData)) {
+        $scope.submitQuiz = function () {
+            if (quizFactory.isAnswered($scope.formData)) {
                 quizFactory.checkAnswer($scope.formData);
                 $location.url('results');
             } else {
                 $scope.error = errorMessage;
             }
-        };
-        
-        $scope.timeoutSubmit = function() {
-            $location.url('results');
         };
 
         init();
@@ -83,7 +74,7 @@
     };
 
     var reviewController = function ($scope, quizFactory) {
-        $scope.review =  quizFactory.getQuizReview();
+        $scope.review = quizFactory.getQuizReview();
         $scope.allCorrect = quizFactory.isAllCorrect();
         $scope.resetQuiz = quizFactory.reset;
     };

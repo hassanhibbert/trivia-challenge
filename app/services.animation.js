@@ -1,19 +1,15 @@
-/**
- * Created by HXHibbert on 5/3/16.
- */
+(function(quizApp) {
 
-(function (quizApp) {
-
-    var animationFactory = function () {
+    var animationFactory = function() {
         var animationService = {};
 
         function whichTransitionEvent() {
             var t,
                 el = document.createElement('fakeelement'),
                 transitions = {
-                    'WebkitTransition' : 'webkitTransitionEnd',
-                    'MozTransition'    : 'transitionend',
-                    'transition'       : 'transitionend'
+                    'WebkitTransition': 'webkitTransitionEnd',
+                    'MozTransition': 'transitionend',
+                    'transition': 'transitionend'
                 };
             for (t in transitions) {
                 if (el.style[t] !== undefined) {
@@ -24,14 +20,13 @@
 
         var transition = whichTransitionEvent();
 
-        animationService.transitionEnd = function (element, animationProperty, cb) {
+        animationService.transitionEnd = function(element, animationProperty, cb) {
             element.on(transition, function(event) {
                 if (event.originalEvent.propertyName === animationProperty) {
                     cb();
                 }
             });
         };
-
 
         return animationService;
 

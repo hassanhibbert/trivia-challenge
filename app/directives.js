@@ -1,19 +1,12 @@
-/**
- * Created by HXHibbert on 5/2/16.
- */
+(function(quizApp) {
 
-(function (quizApp) {
-
-    var quizDirective = function ($location, $timeout) {
+    var quizDirective = function($location, $timeout) {
         return {
-            scope: {
-                timeoutFn: '&'
-            },
+            scope: {},
             restrict: 'E',
             template: '<span></span>',
-            replace: true,
-            link: function (scope, element, attrs) {
-                function countdown(minutes,cb) {
+            link: function(scope, element) {
+                function countdown(minutes, cb) {
                     var seconds = 60,
                         mins = minutes;
                     var tick = function() {
@@ -27,7 +20,6 @@
                                 countdown(mins - 1);
                             }, 1000);
                         }
-                        console.log('what happen now');
                         if (element.html() === '0:00' && typeof cb === 'function') {
                             cb();
                         }
@@ -37,7 +29,7 @@
 
                 // 2 minute countdown until the quiz ends
                 countdown(2, function() {
-                    scope.timeoutFn();
+                    $location.url('results');
                 });
 
             }

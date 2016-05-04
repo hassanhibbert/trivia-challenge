@@ -1,11 +1,8 @@
-/**
- * Created by HXHibbert on 5/2/16.
- */
-(function () {
+(function() {
 
-   var quizApp = angular.module('quizApp', ['ngRoute', 'ngAnimate']);
+    var quizApp = angular.module('quizApp', ['ngRoute', 'ngAnimate']);
 
-    quizApp.config(function($routeProvider){
+    quizApp.config(function($routeProvider) {
         $routeProvider
             .when('/', {
                 controller: 'introController',

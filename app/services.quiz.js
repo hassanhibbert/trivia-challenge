@@ -1,31 +1,27 @@
-/**
- * Created by HXHibbert on 5/2/16.
- */
+(function(quizApp) {
 
-(function (quizApp) {
-
-    var quizFactory = function ($http) {
+    var quizFactory = function($http) {
         var quizServices = {},
             position = 0,
             cachedQuestions = [],
             correct = 0,
             review = [];
 
-        quizServices.cacheData = function (dataArray) {
-            dataArray.forEach(function(item){
+        quizServices.cacheData = function(dataArray) {
+            dataArray.forEach(function(item) {
                 cachedQuestions.push(item);
             });
         };
 
-        quizServices.loadQuestions = function () {
+        quizServices.loadQuestions = function() {
             return $http.get('quizData.json');
         };
 
-        quizServices.getQuestion = function () {
+        quizServices.getQuestion = function() {
             return cachedQuestions[position];
         };
 
-        quizServices.checkAnswer = function (choice) {
+        quizServices.checkAnswer = function(choice) {
             var selectedValue = choice.checked,
                 correctAnswer = cachedQuestions[position].answer,
                 selectedAnswer = cachedQuestions[position].multipleChoice[selectedValue],
@@ -56,11 +52,11 @@
             return (Object.keys(choice).length > 0);
         };
 
-        quizServices.next = function () {
+        quizServices.next = function() {
             position += 1;
         };
 
-        quizServices.showSubmit = function () {
+        quizServices.showSubmit = function() {
             return (position === (cachedQuestions.length - 1))
         };
 
@@ -68,7 +64,7 @@
             return correct;
         };
 
-        quizServices.reset = function () {
+        quizServices.reset = function() {
             position = 0;
             correct = 0;
             cachedQuestions = [];
@@ -79,17 +75,13 @@
             return cachedQuestions.length;
         };
 
-        quizServices.getPercent = function () {
+        quizServices.getPercent = function() {
             var quizLength = cachedQuestions.length;
             return Math.round((correct / quizLength) * 100);
         };
 
-        quizServices.getQuizReview = function () {
+        quizServices.getQuizReview = function() {
             return review;
-        };
-
-        quizServices.isAllCorrect = function() {
-            return (correct === quizServices.getQuizLength());
         };
 
         return quizServices;

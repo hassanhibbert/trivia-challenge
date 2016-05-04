@@ -17,7 +17,7 @@
                             $timeout(tick, 1000);
                         } else if (mins > 1) {
                             $timeout(function() {
-                                countdown(mins - 1);
+                                countdown(mins - 1, cb);
                             }, 1000);
                         }
                         if (element.html() === '0:00' && typeof cb === 'function') {

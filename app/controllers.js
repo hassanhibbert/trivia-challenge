@@ -10,7 +10,7 @@
                 $quizTitle.addClass('fadeInScale');
             };
 
-        animationFactory.transitionEnd($quizTitle, 'opacity', function () {
+        animationFactory.transitionEnd($circleImage, 'transform', function () {
             $startButton.addClass('fadeIn');
         });
 
@@ -70,16 +70,18 @@
         $scope.correctNum = quizFactory.getCorrectNumber();
         $scope.quizLength = quizFactory.getQuizLength();
         $scope.percent = quizFactory.getPercent();
-        $scope.resetQuiz = quizFactory.reset;
+        $scope.resetQuiz = function() {
+            quizFactory.reset();
+        };
     };
 
     var reviewController = function ($scope, quizFactory) {
         $scope.review = quizFactory.getQuizReview();
-        $scope.allCorrect = quizFactory.isAllCorrect();
-        $scope.resetQuiz = quizFactory.reset;
+        $scope.resetQuiz = function() {
+            quizFactory.reset();
+        };
     };
-
-
+    
     // intro controller
     quizApp.controller('introController', ['$scope', '$timeout', 'animationFactory', introController]);
 

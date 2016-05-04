@@ -8,9 +8,11 @@
             review = [];
 
         quizServices.cacheData = function(dataArray) {
-            dataArray.forEach(function(item) {
-                cachedQuestions.push(item);
-            });
+            if (cachedQuestions.length === 0) {
+                dataArray.forEach(function(item) {
+                    cachedQuestions.push(item);
+                });
+            }
         };
 
         quizServices.loadQuestions = function() {

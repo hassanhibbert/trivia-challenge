@@ -28,7 +28,7 @@
                 }
 
                 // 2 minute countdown until the quiz ends
-                countdown(2, function() {
+                countdown(1, function() {
                     $location.url('results');
                 });
 

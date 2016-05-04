@@ -7,7 +7,6 @@
                 quizSubmit: '@'
             },
             restrict: 'E',
-            template: '<span></span>',
             link: function(scope, element) {
                 function countdown(minutes, cb) {
                     var seconds = 60,
@@ -24,9 +23,9 @@
                             }, 1000);
                         }
 
-                        if (element.html() === '0:00' && typeof cb === 'function') {
+                        if (element.html() === '0:00') {
                             cb();
-                        }  if (scope.quizSubmit === 'true') { // end timer when quiz is submitted
+                        } else if (scope.quizSubmit === 'true') { // end timer when quiz is submitted
                             tick = null;
                         }
                     };

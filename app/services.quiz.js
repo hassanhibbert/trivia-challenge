@@ -86,6 +86,10 @@
             return review;
         };
 
+        quizServices.isQuizLoaded = function() {
+            return (quizServices.getQuizLength() !== 0);
+        };
+
         return quizServices;
     };
 

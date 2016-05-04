@@ -70,7 +70,7 @@
 
 
     var resultsController = function ($scope, quizFactory, $location) {
-        if (quizFactory.getQuizLength() !== 0) { // check if quiz was loaded
+        if (quizFactory.isQuizLoaded()) {
             $scope.correctNum = quizFactory.getCorrectNumber();
             $scope.quizLength = quizFactory.getQuizLength();
             $scope.percent = quizFactory.getPercent();
@@ -83,7 +83,7 @@
     };
 
     var reviewController = function ($scope, quizFactory, $location) {
-        if (quizFactory.getQuizLength() !== 0) { // check if quiz was loaded
+        if (quizFactory.isQuizLoaded()) {
             $scope.review = quizFactory.getQuizReview();
             $scope.resetQuiz = function () {
                 quizFactory.reset();

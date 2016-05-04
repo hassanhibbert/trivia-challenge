@@ -414,7 +414,7 @@ body {
 .ng-enter {
     transition: 0.5s linear all;
     opacity: 0;
-    transition-delay: 0.4s;
+    transition-delay: 0.5s;
 }
 
 .ng-enter.ng-enter-active {

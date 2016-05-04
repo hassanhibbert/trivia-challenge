@@ -27,7 +27,7 @@
   },
   {
     "id": 3,
-    "question": "What was snickers original name?",
+    "question": "What was Snickers original name?",
     "multipleChoice": {
       "A": "Fun run",
       "B": "Marathon",
@@ -40,15 +40,15 @@
   },
   {
     "id": 4,
-    "question": "Which basketball team does this logo belong to?",
+    "question": "What is Michael Jordan's middle name?",
     "multipleChoice": {
-      "A": "Cincinnati Bulls",
-      "B": "Michigan Bulls",
-      "C": "Chicago Bulls",
-      "D": "LA Bulls"
+      "A": "Anthony",
+      "B": "Joseph",
+      "C": "Stephen",
+      "D": "Jeffrey"
     },
     "image": "images/bull.jpg",
-    "answer": "C",
+    "answer": "D",
     "category": "Basketball"
   },
   {

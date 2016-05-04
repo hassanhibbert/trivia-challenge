@@ -2,7 +2,10 @@
 
     var quizDirective = function($location, $timeout) {
         return {
-            scope: {},
+            scope: {
+                minute: '@',
+                quizSubmit: '@'
+            },
             restrict: 'E',
             template: '<span></span>',
             link: function(scope, element) {
@@ -20,15 +23,17 @@
                                 countdown(mins - 1, cb);
                             }, 1000);
                         }
+
                         if (element.html() === '0:00' && typeof cb === 'function') {
                             cb();
+                        }  if (scope.quizSubmit === 'true') { // end timer when quiz is submitted
+                            tick = null;
                         }
                     };
                     tick();
                 }
 
-                // 2 minute countdown until the quiz ends
-                countdown(1, function() {
+                countdown(Number(scope.minute), function() {
                     $location.url('results');
                 });
 

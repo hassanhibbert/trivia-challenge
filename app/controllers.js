@@ -55,31 +55,42 @@
         $scope.submitQuiz = function () {
             if (quizFactory.isAnswered($scope.formData)) {
                 quizFactory.checkAnswer($scope.formData);
+                $scope.quizSubmitted = true; // flag for quiz-timer directive
                 $location.url('results');
             } else {
                 $scope.error = errorMessage;
             }
         };
 
+        $scope.quizSubmitted = false; // flag for quiz-timer directive
+
         init();
 
     };
 
 
-    var resultsController = function ($scope, quizFactory) {
-        $scope.correctNum = quizFactory.getCorrectNumber();
-        $scope.quizLength = quizFactory.getQuizLength();
-        $scope.percent = quizFactory.getPercent();
-        $scope.resetQuiz = function() {
-            quizFactory.reset();
-        };
+    var resultsController = function ($scope, quizFactory, $location) {
+        if (quizFactory.getQuizLength() !== 0) { // check if quiz was loaded
+            $scope.correctNum = quizFactory.getCorrectNumber();
+            $scope.quizLength = quizFactory.getQuizLength();
+            $scope.percent = quizFactory.getPercent();
+            $scope.resetQuiz = function() {
+                quizFactory.reset();
+            };
+        } else {
+            $location.url('/');
+        }
     };
 
-    var reviewController = function ($scope, quizFactory) {
-        $scope.review = quizFactory.getQuizReview();
-        $scope.resetQuiz = function() {
-            quizFactory.reset();
-        };
+    var reviewController = function ($scope, quizFactory, $location) {
+        if (quizFactory.getQuizLength() !== 0) { // check if quiz was loaded
+            $scope.review = quizFactory.getQuizReview();
+            $scope.resetQuiz = function () {
+                quizFactory.reset();
+            };
+        } else {
+            $location.url('/');
+        }
     };
     
     // intro controller
@@ -89,9 +100,9 @@
     quizApp.controller('quizController', ['$scope', 'quizFactory', '$rootElement', '$location', quizController]);
 
     // results controller
-    quizApp.controller('resultsController', ['$scope', 'quizFactory', resultsController]);
+    quizApp.controller('resultsController', ['$scope', 'quizFactory', '$location', resultsController]);
 
     // review controller
-    quizApp.controller('reviewController', ['$scope', 'quizFactory', reviewController]);
+    quizApp.controller('reviewController', ['$scope', 'quizFactory', '$location', reviewController]);
 
 })(angular.module('quizApp'), jQuery);

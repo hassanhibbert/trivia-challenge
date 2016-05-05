@@ -1,21 +1,4 @@
-(function (quizApp, $) {
-
-    var introController = function ($scope, $timeout, animationFactory) {
-        var $circleImage = $('.circle'),
-            $quizTitle = $('.title'),
-            $startButton = $('.start-quiz'),
-
-            animation = function () {
-                $circleImage.addClass('fadeInScale');
-                $quizTitle.addClass('fadeInScale');
-            };
-
-        animationFactory.transitionEnd($circleImage, 'transform', function () {
-            $startButton.addClass('fadeIn');
-        });
-
-        $timeout(animation);
-    };
+(function (quizApp) {
 
     var quizController = function ($scope, quizFactory, $rootElement, $location) {
 
@@ -92,9 +75,6 @@
             $location.url('/');
         }
     };
-    
-    // intro controller
-    quizApp.controller('introController', ['$scope', '$timeout', 'animationFactory', introController]);
 
     // quiz controller
     quizApp.controller('quizController', ['$scope', 'quizFactory', '$rootElement', '$location', quizController]);
@@ -105,4 +85,4 @@
     // review controller
     quizApp.controller('reviewController', ['$scope', 'quizFactory', '$location', reviewController]);
 
-})(angular.module('quizApp'), jQuery);
+})(angular.module('quizApp'));

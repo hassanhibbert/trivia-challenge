@@ -5,7 +5,6 @@
     quizApp.config(function($routeProvider) {
         $routeProvider
             .when('/', {
-                controller: 'introController',
                 templateUrl: 'partials/intro.html'
             })
             .when('/quiz', {

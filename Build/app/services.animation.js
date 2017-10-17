@@ -21,10 +21,10 @@
         var transition = whichTransitionEvent();
 
         animationService.transitionEnd = function(element, animationProperty, cb) {
-            element.on(transition, function(event) {
-                if (event.originalEvent.propertyName === animationProperty) {
-                    cb();
-                }
+            element.addEventListener(transition, function (event) {
+              if (event.propertyName === animationProperty) {
+                cb(event.propertyName);
+              }
             });
         };
 

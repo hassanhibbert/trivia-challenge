@@ -55,11 +55,12 @@
                     $quizTitle.addClass('fadeInScale');
                 };
 
-            animationFactory.transitionEnd($circleImage, 'transform', function () {
+            animationFactory.transitionEnd($circleImage[0], 'transform', function () {
                 $startButton.addClass('fadeIn');
             });
 
-            $timeout(animation);
+          $timeout(animation, 0);
+
         };
 
         return {

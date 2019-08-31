@@ -58,7 +58,7 @@
                     });
                 };
 
-          $timeout(animation, 0);
+          $timeout(animation, 10);
 
         };
 

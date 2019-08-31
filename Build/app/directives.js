@@ -53,11 +53,10 @@
                 animation = function () {
                     $circleImage.addClass('fadeInScale');
                     $quizTitle.addClass('fadeInScale');
+                    animationFactory.transitionEnd($circleImage[0], 'transform', function () {
+                        $startButton.addClass('fadeIn');
+                    });
                 };
-
-            animationFactory.transitionEnd($circleImage[0], 'transform', function () {
-                $startButton.addClass('fadeIn');
-            });
 
           $timeout(animation, 0);
 

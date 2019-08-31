@@ -39,27 +39,16 @@
         };
     };
 
-    var introDirective = function(animationFactory, $timeout) {
+    var introDirective = function() {
 
         function _get(selector) {
             return document.querySelector(selector);
         }
         
         var link = function link() {
-            var $circleImage = angular.element(_get('.circle')),
-                $quizTitle = angular.element(_get('.title')),
-                $startButton = angular.element(_get('.start-quiz')),
-
-                animation = function () {
-                    $circleImage.addClass('fadeInScale');
-                    $quizTitle.addClass('fadeInScale');
-                    animationFactory.transitionEnd($circleImage[0], 'transform', function () {
-                        $startButton.addClass('fadeIn');
-                    });
-                };
-
-          $timeout(animation, 10);
-
+            angular.element(_get('.circle')).addClass('fadeInScale');
+            angular.element(_get('.title')).addClass('fadeInScale');
+            angular.element(_get('.start-quiz')).addClass('fadeIn');
         };
 
         return {
